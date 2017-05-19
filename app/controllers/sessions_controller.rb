@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
-  def forget
-    update_attribute(:remember_digest, nil)
-  end
+ # def forget
+ #   update_attribute(:remember_digest, nil)
+ # end
 end
