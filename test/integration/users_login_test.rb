@@ -15,7 +15,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
   
-    test "valid signup information" do
+  test "valid signup information" do
     get signup_path
     assert_difference 'User.count', 1 do
       post users_path, params: { user: { name:  "Example User",
@@ -27,7 +27,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert is_logged_in?
   end
-    test "login with valid information followed by logout" do
+  
+  test "login with valid information followed by logout" do
     get login_path
     post login_path, params: { session: { email:    @user.email,
                                           password: 'password' } }
@@ -48,10 +49,12 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", logout_path,      count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
   end
+  
   test "authenticated? should return false for a user with nil digest" do
-    assert_not @user.authenticated?('')
+    assert_not @user.authenticated?(:remember, '')
   end
-    test "login with remembering" do
+  
+  test "login with remembering" do
     log_in_as(@user, remember_me: '1')
     assert_not_empty cookies['remember_token']
   end
