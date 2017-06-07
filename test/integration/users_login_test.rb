@@ -15,7 +15,11 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
   
+<<<<<<< HEAD
   test "login with valid information followed by logout" do
+=======
+    test "login with valid information followed by logout" do
+>>>>>>> upstream/master
     get login_path
     post login_path, params: { session: { email:    @user.email,
                                           password: 'password' } }
@@ -38,7 +42,11 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   end
   
   test "authenticated? should return false for a user with nil digest" do
+<<<<<<< HEAD
     assert_not @user.authenticated?(:remember, '')
+=======
+    assert_not @user.authenticated?(:remember,'')
+>>>>>>> upstream/master
   end
   
   test "login with remembering" do

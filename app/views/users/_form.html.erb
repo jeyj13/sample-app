@@ -1,6 +1,7 @@
 <%= form_for(@user) do |f| %>
+<!--not sure if only one entry should be here. Example in 13.43-45 shows putting the form directly on each of the views-->
   <%= render 'shared/error_messages', object: @user %>
-
+  <%= render 'shared/error_messages', object: f.object %> 
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
 
